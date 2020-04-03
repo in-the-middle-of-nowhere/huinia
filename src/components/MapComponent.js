@@ -9,53 +9,13 @@ class MapComponent extends Component {
         super(props);
         this.state = {
             radius: 300,
-            center: [59.927171, 30.470315],
-            zoom: 13,
-            orders: [],
-            circle: {
-                coords: [59.927171, 30.470315],
-            },
-            markers: [
-                this.newMarker({
-                    position: [59.927171, 30.470315],
-                    car: 'BMW 7x', number: 'R283RR',
-                    color: 'Черный', driver: 'Василий Петрович',
-                    status: 'waiting'
-                }),
-                this.newMarker({
-                    position: [59.927171, 30.450315],
-                    car: 'BMW 7x', number: 'R283RR',
-                    color: 'Черный', driver: 'Василий Петрович',
-                    status: 'driving'
-                })
-            ]
+            center: [59.928459, 30.320582],
+            zoom: 10,
+            orders: []
         };
-    }
-
-    onMapClick(event) {
-        this.setState({
-            circle: {
-                coords: event.get('coords')
-            }
-        });
     }
 
     newMarker = (data) => {
-        const status = {
-            search: {
-                text: 'Поиск',
-                color: '#1771F1'
-            },
-            driving: {
-                text: 'Едет',
-                color: '#A400FF'
-            },
-            waiting: {
-                text: 'Ожидает',
-                color: '#F85C50'
-            }
-        };
-        const dataStatus = status[data.status];
 
         return {
             geometry: data.position,
@@ -66,8 +26,8 @@ class MapComponent extends Component {
                     </div>
                     <div style="font-family: 'Roboto'">${data.driver}</div>
                     <div style="display: flex">
-                        <div style="margin-top: auto; margin-bottom: auto; margin-left: 0; color: ${dataStatus.color}">${dataStatus.text}</div>
-                        <div style="padding: 4px; margin: 5px; border: 1px solid #000; border-radius: 10px; width: 60px">
+                        <div style="margin-top: auto; margin-bottom: auto; margin-left: 0;">${data.status}</div>
+                        <div style="padding: 4px; margin: 5px; border: 1px solid #000; border-radius: 10px;">
                             ${data.number.slice(0, 1)} ${data.number.slice(1, 4)} ${data.number.slice(4)}
                         </div>
                     </div>
@@ -86,10 +46,10 @@ class MapComponent extends Component {
                 
                 response.data.data.forEach(element => {
                     orders.push(this.newMarker({
-                        position: [element.start_latitude, element.stop_longitude],
+                        position: [element.start_latitude, element.start_longitude],
                         car: element.car, number: element.number,
                         color: element.color, driver: element.driver,
-                        status: element.order
+                        status: element.status
                     }))
                 });
 
@@ -106,8 +66,7 @@ class MapComponent extends Component {
 
         return (
             <YMaps>
-                <Map className="map" defaultState={{center: this.state.center, zoom: this.state.zoom}}
-                     onClick={this.onMapClick.bind(this)}>
+                <Map className="map" defaultState={{center: this.state.center, zoom: this.state.zoom}}>
                     {
                         this.state.orders.map(placeMark => {
                             return <Placemark {...placeMark} />

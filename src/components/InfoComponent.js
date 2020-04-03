@@ -85,11 +85,11 @@ class InfoComponent extends Component {
             const url = '/spam/start/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et&radius=' + this.state.radius + '&accounts_count=' + this.state.num_accounts + '&service_type=' + this.state.selectedOption.value + '&latitude=' + this.state.markers[0].geometry[0] + '&longitude=' + this.state.markers[0].geometry[1];
             axios.get(url)
                 .then((response) => {
-                    const data = response.data
-                    console.log(data);
+                    alert('Сделано!')
                 })
                 .catch((error) => {
                     console.log(error);
+                    alert('Ошибка')
                 })
         }
     }
