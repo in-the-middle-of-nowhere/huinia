@@ -110,22 +110,22 @@ class InfoComponent extends Component{
                 <div className="info">
                     <div className="info--card card">
                         <div className="card--first-row">
-                            <p className="card--first-row__text">Баланс: { this.state.balance } ₽</p>
+                            <p className="card--first-row__text"><b>Баланс:</b> { this.state.balance } ₽</p>
                         </div>
                         <div className="card--second-row second-row">
                             <div className="second-row--first-col">
-                                <p className="second-row--first-col__label">Стоимость аккаунта</p>
+                                <p className="second-row--first-col__label">Стоимость<br/>аккаунта</p>
                                 <p className="second-row--first-col__text">{ this.state.account_price } ₽</p>
                             </div>
                             <div className="second-row--second-col">
-                                <p className="second-row--second-col__label">Доступно к покупке</p>
+                                <p className="second-row--second-col__label">Доступно к<br/>покупке</p>
                                 <p className="second-row--second-col__text">{ this.state.can_buy } шт.</p>
                             </div>
                         </div>
                     </div>
                     <div className="info--card card">
                         <div className="card--first-row">
-                            <p className="card--first-row__text">Аккаунты</p>
+                            <p className="card--first-row__text"><b>Аккаунты</b></p>
                         </div>
                         <div className="card--second-row second-row">
                             <div className="second-row--first-col">
@@ -140,7 +140,7 @@ class InfoComponent extends Component{
                     </div>
                     <div className="info--card card">
                         <div className="card--third">
-                            <p className="card--third__label">Общее количество виртуальных аккаунтов доступных к покупке</p>
+                            <p className="card--third__label"><b>Общее количество виртуальных аккаунтов<br/>доступных к покупке</b></p>
                             <p className="card--third__text">{ this.state.all_accounts_on_sms_acivate } шт.</p>
                         </div>
                     </div>
@@ -148,14 +148,14 @@ class InfoComponent extends Component{
                 <div className="order">
                     <div className="order--first-form order-form">
                         <div className="order-form--content">
-                            <p className="order-form__label">Радиус (в метрах)</p>
-                            <input type="text" className="order-form__input" name="radius" value={this.state.radius} onChange={this.handleInputChange}/>
+                            <p className="order-form--content__label">Радиус (в метрах)</p>
+                            <input type="text" className="order-form--content__input" name="radius" value={this.state.radius} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className="order--second-form order-form">
                         <div className="order-form--content">
-                            <p className="order-form__label">Количество аккаунтов</p>
-                            <input type="text" className="order-form__input" name="num_accounts" value={this.state.num_accounts} onChange={this.handleInputChange}/>
+                            <p className="order-form--content__label">Количество аккаунтов</p>
+                            <input type="text" className="order-form--content__input" name="num_accounts" value={this.state.num_accounts} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <Select
@@ -164,8 +164,10 @@ class InfoComponent extends Component{
                         onChange={this.handleSelectChange}
                         className="order--select"
                     />
-                    <button onClick={this.handleStartSpam} className="order__start">Начать</button>
-                    <button onClick={this.handleStopSpam} className="order__stop">Остановить</button>
+                    <div className="order--row">
+                        <button onClick={this.handleStartSpam} className="order--row__start">Начать</button>
+                        <button onClick={this.handleStopSpam} className="order--row__stop">Остановить</button>
+                    </div>
                     <button onClick={this.handleDeletePhones} className="order__delete">Удалить номера телефонов</button>
                 </div>
             </div>

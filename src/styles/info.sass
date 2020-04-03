@@ -3,6 +3,7 @@
     flex-direction: column
 
 .info
+    margin-top: 40px
     display: flex
     flex-direction: column
     margin-left: auto
@@ -10,16 +11,123 @@
     &--card
         display: flex
         flex-direction: column
+        margin-bottom: 30px
 
 .card
+    border-radius: 10px
+    box-shadow: 0 0 10px rgba(0,0,0,0.5)
+    padding: 20px
     &--first-row
         margin: auto
+        margin-bottom: 20px
+        &__text
+            font-size: 24px
     &--second-row
+        display: flex
+        flex-direction: row
+    &--third
+        &__label
+            font-size: 24px
+            width: 300px
+            text-align: center
+        &__text
+            font-size: 20px
+            text-align: center
+            margin-top: 10px       
 
 .second-row
     &--first-col
-        margin: 0 auto 0 auto
+        display: flex
+        flex-direction: column
+        width: 120px
+        margin-right: auto
+        &__label
+            font-size: 22px
+            margin-bottom: 10px
+            text-align: center
+        &__text
+            font-size: 20px
+            text-align: center
     &--second-col
         display: flex
+        flex-direction: column
+        width: 120px
+        margin-left: auto
+        &__label
+            font-size: 22px
+            text-align: center
+            margin-bottom: 10px
+        &__text
+            font-size: 20px
+            text-align: center
+
+
+.order
+    margin-top: 20px
+    display: flex
+    flex-direction: column
+    &--row
+        display: flex
         flex-direction: row
-        margin: 0 auto 0 auto
+        &__start
+            border: none
+            padding: 15px 20px
+            margin-bottom: 20px
+            width: 45%
+            margin-left: auto
+            margin-right: auto
+            border-radius: 5px
+            font-size: 20px
+        &__stop
+            border: none
+            padding: 15px 20px
+            margin-bottom: 20px
+            width: 45%
+            margin-left: auto
+            margin-right: auto
+            border-radius: 5px
+            font-size: 20px
+    &--first-form
+        margin-bottom: 20px
+    &--second-form
+        margin-bottom: 20px
+    &--select
+        width: 300px
+        margin-left: auto
+        margin-right: auto
+        margin-bottom: 30px
+
+    &__delete
+        border: none
+        padding: 15px 20px
+        margin-bottom: 20px
+        width: 60%
+        margin-left: auto
+        margin-right: auto
+        border-radius: 5px
+        font-size: 20px
+        color: #ffffff
+        background-color: #ff0000
+
+.order-form
+    display: flex
+    flex-direction: column
+    margin-left: auto
+    margin-right: auto
+    &--content
+        display: flex
+        flex-direction: column
+        &__label
+            text-align: center
+            font-size: 22px
+        &__input
+            margin-left: auto
+            margin-right: auto
+            margin-top: 15px
+            border: none
+            height: 30px
+            width: 150px
+            font-size: 18px
+            border-radius: 5px
+            background-color: #f2f2f2
+            
