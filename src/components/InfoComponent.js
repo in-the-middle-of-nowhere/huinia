@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import { Map, Placemark, YMaps} from 'react-yandex-maps';
 import Select from 'react-select';
 import axios from 'axios';
 import '../styles/info.sass';
+import { marker } from 'leaflet';
 
 const options = [
     { value: '1', label: 'Эконом' },
@@ -21,7 +23,6 @@ class InfoComponent extends Component{
         this.handleStartSpam = this.handleStartSpam.bind(this);
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.handleStopSpam = this.handleStopSpam.bind(this);
-        this.handleDeletePhones = this.handleDeletePhones.bind(this);
 
         this.state = {
             balance: null,
@@ -31,11 +32,26 @@ class InfoComponent extends Component{
             all_accounts: null,
             all_accounts_on_sms_acivate: null,
             selectedOption: null,
-            radius: '',
+            radius: 0,
+            markers: [],
             num_accounts: '',
+            coords: [],
+            center: [59.927171, 30.470315],
+            zoom: 10,
 
         }
     }
+
+    newMarker = (coords) => {
+
+        return {
+            geometry: {coords},
+            properties: {},
+            modules: []
+        }
+    }
+
+    
     
     componentDidMount(){
         axios.get('/info/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et')
@@ -67,7 +83,7 @@ class InfoComponent extends Component{
 
     handleStartSpam(){
         if (this.state.selectedOption !== null && this.state.radius !== '' && this.state.num_accounts !== ''){
-            const url = '/spam/start/?latitude=59.940127&longitude=30.251783&app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et&radius=' + this.state.radius + '&accounts_count=' + this.state.num_accounts + '&service_type=' + this.state.selectedOption.value;
+            const url = '/spam/start/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et&radius=' + this.state.radius + '&accounts_count=' + this.state.num_accounts + '&service_type=' + this.state.selectedOption.value + '&latitude=' + this.state.coords[0] + '&longitude=' + this.state.coords[1];
             axios.get(url)
                 .then((response) => {
                     const data = response.data
@@ -89,6 +105,22 @@ class InfoComponent extends Component{
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    onMapClick(event) {
+
+        event.preventDefault();
+
+        const {coords} = this.state;
+        coords.length = 0
+        coords.push(event.get('coords'))
+        this.setState({coords})
+
+        const {markers} = this.state;
+        markers.length = 0;
+        markers.push(this.newMarker({position: this.state.coords}))
+        this.setState({markers})
+
     }
 
     handleDeletePhones(){
@@ -164,6 +196,16 @@ class InfoComponent extends Component{
                         onChange={this.handleSelectChange}
                         className="order--select"
                     />
+                    <YMaps>
+                        <Map className="order--map" defaultState={{center: this.state.center, zoom: this.state.zoom}}
+                            onClick={this.onMapClick.bind(this)}>
+                            {
+                                this.state.markers.map(placeMark => {
+                                    return <Placemark {...placeMark} />
+                                })
+                            }
+                        </Map>
+                    </YMaps>
                     <div className="order--row">
                         <button onClick={this.handleStartSpam} className="order--row__start">Начать</button>
                         <button onClick={this.handleStopSpam} className="order--row__stop">Остановить</button>
