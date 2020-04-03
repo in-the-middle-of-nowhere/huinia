@@ -148,14 +148,14 @@ class InfoComponent extends Component{
                 <div className="order">
                     <div className="order--first-form order-form">
                         <div className="order-form--content">
-                            <p className="order-form__label">Радиус (в метрах)</p>
-                            <input type="text" className="order-form__input" name="radius" value={this.state.radius} onChange={this.handleInputChange}/>
+                            <p className="order-form--content__label">Радиус (в метрах)</p>
+                            <input type="text" className="order-form--content__input" name="radius" value={this.state.radius} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className="order--second-form order-form">
                         <div className="order-form--content">
-                            <p className="order-form__label">Количество аккаунтов</p>
-                            <input type="text" className="order-form__input" name="num_accounts" value={this.state.num_accounts} onChange={this.handleInputChange}/>
+                            <p className="order-form--content__label">Количество аккаунтов</p>
+                            <input type="text" className="order-form--content__input" name="num_accounts" value={this.state.num_accounts} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <Select
@@ -164,8 +164,10 @@ class InfoComponent extends Component{
                         onChange={this.handleSelectChange}
                         className="order--select"
                     />
-                    <button onClick={this.handleStartSpam} className="order__start">Начать</button>
-                    <button onClick={this.handleStopSpam} className="order__stop">Остановить</button>
+                    <div className="order--row">
+                        <button onClick={this.handleStartSpam} className="order--row__start">Начать</button>
+                        <button onClick={this.handleStopSpam} className="order--row__stop">Остановить</button>
+                    </div>
                     <button onClick={this.handleDeletePhones} className="order__delete">Удалить номера телефонов</button>
                 </div>
             </div>
