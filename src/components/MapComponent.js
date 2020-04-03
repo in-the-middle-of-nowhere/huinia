@@ -14,13 +14,15 @@ class MapComponent extends Component {
             markers: [{
                 geometry: [59.927171, 30.470315],
                 properties: {
-                    balloonContent: 'Тут пидорас'
+                    balloonContent: "<span>BMW 7x <br/> R283RR <br/> Черный\n" +
+                        "                        <br/> Василий Петрович <br/> Едет</span>"
                 },
                 modules: ['geoObject.addon.balloon', 'geoObject.addon.hint']
             }, {
                 geometry: [59.927171, 30.42315],
                 properties: {
-                    balloonContent: 'Тут пидорас'
+                    balloonContent: "<span>BMW 7x <br/> R283RR <br/> Черный\n" +
+                        "                        <br/> Василий Петрович <br/> Едет</span>"
                 },
                 modules: ['geoObject.addon.balloon', 'geoObject.addon.hint']
             }]
