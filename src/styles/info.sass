@@ -3,6 +3,7 @@
     flex-direction: column
 
 .info
+    margin-top: 40px
     display: flex
     flex-direction: column
     margin-left: auto
@@ -10,16 +11,42 @@
     &--card
         display: flex
         flex-direction: column
+        margin-bottom: 30px
 
 .card
     &--first-row
         margin: auto
+        margin-bottom: 20px
+        &__text
+            font-size: 26px
     &--second-row
+        display: flex
+        flex-direction: row
+    &--third
+        &__label
+            font-size: 26px
+            width: 300px
 
 .second-row
     &--first-col
-        margin: 0 auto 0 auto
-    &--second-col
         display: flex
-        flex-direction: row
-        margin: 0 auto 0 auto
+        flex-direction: column
+        margin-right: auto
+        text-align: center
+        &__label
+            font-size: 25px
+            margin-bottom: 10px
+        &__text
+            font-size: 20px
+            text-align: center
+    &--second-col
+        margin-left: auto
+        display: flex
+        flex-direction: column
+        &__label
+            font-size: 25px
+            text-align: center
+            margin-bottom: 10px
+        &__text
+            font-size: 20px
+            text-align: center

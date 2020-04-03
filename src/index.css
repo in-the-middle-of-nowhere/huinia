@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .map {
   height: calc( 100vh - 80px );
 }
