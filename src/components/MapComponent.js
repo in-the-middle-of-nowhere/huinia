@@ -60,18 +60,17 @@ class MapComponent extends Component {
         return {
             geometry: data.position,
             properties: {
-                balloonContent: `<div style="width: 150px">
-                    <div style="display: flex; margin-bottom: 10px">
-                        <div style="padding: 5px; font-weight: bold">${data.car}</div>
-                        <div style="padding: 5px">${data.color}</div>
+                balloonContent: `<div style="width: 150px; padding: 5px;">
+                    <div style="display: flex;">
+                        <div style="font-weight: bold">${data.car}</div>
                     </div>
+                    <div style="font-family: 'Roboto'">${data.driver}</div>
                     <div style="display: flex">
-                        <div style="padding: 4px; margin: 5px; margin-left: 0; color: ${dataStatus.color}">${dataStatus.text}</div>
+                        <div style="margin-top: auto; margin-bottom: auto; margin-left: 0; color: ${dataStatus.color}">${dataStatus.text}</div>
                         <div style="padding: 4px; margin: 5px; border: 1px solid #000; border-radius: 10px; width: 60px">
                             ${data.number.slice(0, 1)} ${data.number.slice(1, 4)} ${data.number.slice(4)}
                         </div>
                     </div>
-                    <div style="margin-top: 10px; font-family: 'Roboto'">${data.driver}</div>
                 </div>`
             },
             modules: ['geoObject.addon.balloon']
@@ -81,10 +80,22 @@ class MapComponent extends Component {
     componentDidMount() {
         axios.get('info/orders/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et')
             .then((response) => {
-                this.setState({
-                    orders: response.data.data
+
+                const {orders} = this.state.orders;
+                orders.length = 0;
+                
+                response.data.data.forEach(element => {
+                    orders.push(this.newMarker({
+                        position: [element.start_latitude, element.stop_longitude],
+                        car: element.car, number: element.number,
+                        color: element.color, driver: element.driver,
+                        status: element.order
+                    }))
                 });
+
+                this.setState({orders})
                 console.log(this.state.orders);
+
             })
             .catch((error) => {
                 console.log(error);
@@ -92,12 +103,13 @@ class MapComponent extends Component {
     }
 
     render() {
+
         return (
             <YMaps>
                 <Map className="map" defaultState={{center: this.state.center, zoom: this.state.zoom}}
                      onClick={this.onMapClick.bind(this)}>
                     {
-                        this.state.markers.map(placeMark => {
+                        this.state.orders.map(placeMark => {
                             return <Placemark {...placeMark} />
                         })
                     }

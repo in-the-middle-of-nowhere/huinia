@@ -36,7 +36,7 @@ class InfoComponent extends Component{
             markers: [],
             num_accounts: '',
             coords: [],
-            center: [59.927171, 30.470315],
+            center: [59.928459, 30.320582],
             zoom: 10,
 
         }
@@ -108,8 +108,6 @@ class InfoComponent extends Component{
     }
 
     onMapClick(event) {
-
-        event.preventDefault();
 
         const {coords} = this.state;
         coords.length = 0
