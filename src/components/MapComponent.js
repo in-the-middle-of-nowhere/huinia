@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Map, Placemark, YMaps} from 'react-yandex-maps';
+import {Circle, Map, Placemark, YMaps} from 'react-yandex-maps';
 import axios from 'axios';
 
 
@@ -8,6 +8,7 @@ class MapComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            radius: 300,
             center: [59.927171, 30.470315],
             zoom: 13,
             orders: [],
@@ -58,7 +59,16 @@ class MapComponent extends Component {
                             return <Placemark {...placeMark} />
                         })
                     }
-
+                    <Circle
+                        geometry={[[59.927171, 30.470315], this.state.radius]}
+                        options={{
+                            draggable: true,
+                            fillColor: '#DB709377',
+                            strokeColor: '#990066',
+                            strokeOpacity: 0.8,
+                            strokeWidth: 5,
+                        }}
+                    />
                 </Map>
             </YMaps>
         );
