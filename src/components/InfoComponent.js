@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Map, Placemark, YMaps} from 'react-yandex-maps';
+import {Circle, Map, Placemark, YMaps} from 'react-yandex-maps';
 import Select from 'react-select';
 import axios from 'axios';
 import '../styles/info.sass';
@@ -33,13 +33,15 @@ class InfoComponent extends Component {
             all_accounts: null,
             all_accounts_on_sms_acivate: null,
             selectedOption: null,
-            radius: 0,
+            radius: 1200,
             markers: [],
             num_accounts: '',
             coords: [],
             center: [59.928459, 30.320582],
             zoom: 10,
-
+            circle: {
+                coords: [59.927171, 30.470315]
+            }
         }
     }
 
@@ -107,17 +109,22 @@ class InfoComponent extends Component {
     }
 
     onMapClick(event) {
+        const coords = event.get('coords');
         const markers = this.state.markers;
 
         markers.length = 0;
 
         if (this.state.markers.length === 0) {
-            markers.push(this.newMarker(event.get('coords')));
+            markers.push(this.newMarker(coords));
         } else {
-            markers[0] = this.newMarker(event.get('coords'))
+            markers[0] = this.newMarker(coords)
         }
 
-        this.setState({markers})
+        this.setState({
+            circle: {
+                coords: coords,
+            }
+        })
     }
 
     handleDeletePhones() {
@@ -204,6 +211,14 @@ class InfoComponent extends Component {
                                     return <Placemark {...placeMark} />
                                 })
                             }
+                            <Circle geometry={[this.state.circle.coords, this.state.radius]}
+                                    options={{
+                                        draggable: true,
+                                        fillColor: '#DB709377',
+                                        strokeColor: '#990066',
+                                        strokeOpacity: 0.8,
+                                        strokeWidth: 5,
+                                    }}/>
                         </Map>
                     </YMaps>
                     <div className="order--row">
