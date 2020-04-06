@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://androidfaketaxi.ml/api",
+  "proxy": "http://androidfaketaxi.ml",
   "eslintConfig": {
     "extends": "react-app"
   },

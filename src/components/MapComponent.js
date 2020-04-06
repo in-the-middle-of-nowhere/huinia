@@ -38,7 +38,7 @@ class MapComponent extends Component {
     };
 
     componentDidMount() {
-        axios.get('info/orders/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et')
+        axios.get('/api/info/orders/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et')
             .then((response) => {
 
                 const orders = this.state.orders;
