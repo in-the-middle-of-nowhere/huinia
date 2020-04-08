@@ -7,7 +7,9 @@ class NavbarComponent extends Component{
         return(
             <div className="navbar">
                 <Link to="/" className="navbar__home">Fake Taxi</Link>
-                <Link to="/map" className="navbar__map">Карта</Link>
+                <Link to="/buy" className="navbar__text">Купить</Link>
+                <Link to="/order" className="navbar__text">Заказать</Link>
+                <Link to="/map" className="navbar__text">Карта</Link>
             </div>
         )
     }

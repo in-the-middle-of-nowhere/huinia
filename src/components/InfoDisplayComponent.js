@@ -24,19 +24,8 @@ class InfoDisplayComponent extends Component{
                     </div>
                 </div>
                 <div className="info--card card">
-                    <div className="card--first-row">
-                        <p className="card--first-row__text"><b>Аккаунты</b></p>
-                    </div>
-                    <div className="card--second-row second-row">
-                        <div className="second-row--first-col">
-                            <p className="second-row--first-col__label">Активные</p>
-                            <p className="second-row--first-col__text">{this.props.active_accounts} шт.</p>
-                        </div>
-                        <div className="second-row--second-col">
-                            <p className="second-row--second-col__label">Всего</p>
-                            <p className="second-row--second-col__text">{this.props.all_accounts} шт.</p>
-                        </div>
-                    </div>
+                    <p className="active-accounts card--first-row__text"><b>Аккаунты</b></p>
+                    <p className="second-row--first-col__text">{this.props.active_accounts} шт.</p>
                 </div>
                 <div className="info--card card">
                     <div className="card--third">

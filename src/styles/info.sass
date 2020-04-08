@@ -1,6 +1,17 @@
 .composition
     display: flex
     flex-direction: column
+    &__delete
+        border: none
+        padding: 15px 20px
+        margin-bottom: 20px
+        width: 60%
+        margin-left: auto
+        margin-right: auto
+        border-radius: 5px
+        font-size: 20px
+        color: #ffffff
+        background-color: #ff0000
 
 .info
     margin-top: 40px
@@ -61,82 +72,6 @@
             font-size: 20px
             text-align: center
 
-
-.order
-    margin-top: 20px
-    display: flex
-    flex-direction: column
-    &--map
-        height: 200px
-        width: 80%
-        margin-left: auto
-        margin-right: auto
-        margin-bottom: 30px
-        border-radius: 15px
-        box-shadow: 0 0 10px rgba(0,0,0,0.5)
-    &--row
-        display: flex
-        flex-direction: row
-        &__start
-            border: none
-            padding: 15px 20px
-            margin-bottom: 20px
-            width: 45%
-            margin-left: auto
-            margin-right: auto
-            border-radius: 5px
-            font-size: 20px
-        &__stop
-            border: none
-            padding: 15px 20px
-            margin-bottom: 20px
-            width: 45%
-            margin-left: auto
-            margin-right: auto
-            border-radius: 5px
-            font-size: 20px
-    &--first-form
-        margin-bottom: 20px
-    &--second-form
-        margin-bottom: 20px
-    &--select
-        width: 300px
-        margin-left: auto
-        margin-right: auto
-        margin-bottom: 30px
-
-    &__delete
-        border: none
-        padding: 15px 20px
-        margin-bottom: 20px
-        width: 60%
-        margin-left: auto
-        margin-right: auto
-        border-radius: 5px
-        font-size: 20px
-        color: #ffffff
-        background-color: #ff0000
-
-.order-form
-    display: flex
-    flex-direction: column
-    margin-left: auto
-    margin-right: auto
-    &--content
-        display: flex
-        flex-direction: column
-        &__label
-            text-align: center
-            font-size: 22px
-        &__input
-            margin-left: auto
-            margin-right: auto
-            margin-top: 15px
-            border: none
-            height: 30px
-            width: 150px
-            font-size: 18px
-            border-radius: 5px
-            background-color: #f2f2f2
-            padding: 0 10px
-            
+.active-accounts
+    text-align: center
+    margin-bottom: 10px
