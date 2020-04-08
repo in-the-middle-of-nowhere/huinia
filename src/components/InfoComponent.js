@@ -6,7 +6,7 @@ import InfoDisplayComponent from './InfoDisplayComponent';
 class InfoComponent extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             balance: null,
@@ -27,7 +27,6 @@ class InfoComponent extends Component {
                     account_price: data.info.account_price,
                     can_buy: data.info.can_buy_accounts,
                     active_accounts: data.accounts.free.count,
-                    all_accounts: data.accounts.all.count,
                     all_accounts_on_sms_acivate: data.info.available_for_purchase,
                 });
             })
@@ -37,15 +36,19 @@ class InfoComponent extends Component {
     }
 
     handleDeletePhones() {
+        document.getElementById('deleteButton').style.visibility = 'hidden';
         const url = '/api/hide/all/accounts/?app_key=Zab+a-G$Z+NxEv4X%vUMAPnh?8-wE&ESdFz3GA&W5X=@QAVVBvmeWPz*-?JWF*et';
         axios.get(url)
             .then((response) => {
-                const data = response.data
-                console.log(data);
+                const data = response.data;
             })
             .catch((error) => {
                 console.log(error);
             })
+            .then(() => {
+                document.getElementById('deleteButton').style.visibility = 'visible';
+            })
+
     }
 
     render() {

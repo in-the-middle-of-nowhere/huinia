@@ -3,19 +3,36 @@
     height: 60px
     background: #282b2f
     &__home
-        margin-right: auto
-        margin-left: 40px
         color: #ffffff
         text-decoration: none
         font-size: 20px
-        margin-top: auto
-        margin-bottom: auto
-    &__text
-        margin-left: auto
+        margin: auto auto auto 20px
+
+        &:hover
+            color: #ffffff
+            text-decoration: none
+
+.point-text
+    text-decoration: none
+    color: #000000
+    &:hover
+        color: #000000
+        text-decoration: none
+
+.dropdown-toggle
+    color: #ffffff
+    font-size: 18px
+    &:hover
         color: #ffffff
         text-decoration: none
-        font-size: 16px
-        margin-top: auto
-        margin-bottom: auto
-        &:last-child
-            margin-right: 40px  
+    &::after
+        display: none!important
+
+// .right-side
+//     display: flex
+//     flex-direction: column
+//     color
+//     &--point
+//         &__text
+//             text-decoration: none
+//             color: #000000

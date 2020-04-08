@@ -20,33 +20,30 @@
     margin-left: auto
     margin-right: auto
     &--card
+        margin: 0 auto 30px auto
+        width: 95%
         display: flex
         flex-direction: column
-        margin-bottom: 30px
-
-.card
-    border-radius: 10px
-    box-shadow: 0 0 10px rgba(0,0,0,0.5)
-    padding: 20px
-    &--first-row
-        margin: auto
-        margin-bottom: 20px
-        &__text
-            font-size: 24px
-    &--second-row
-        display: flex
-        flex-direction: row
-    &--third
-        &__label
-            font-size: 24px
-            width: 300px
-            text-align: center
-        &__text
-            font-size: 20px
-            text-align: center
-            margin-top: 10px       
+        border-radius: 10px
+        box-shadow: 0 0 10px rgba(0,0,0,0.5)
+        padding: 20px
+        &--first-row
+            margin: auto auto 20px auto
+            &__text
+                font-size: 24px
+        &--third
+            &__label
+                font-size: 24px
+                width: 300px
+                text-align: center
+            &__text
+                font-size: 20px
+                text-align: center
+                margin-top: 10px
 
 .second-row
+    display: flex
+    flex-direction: row
     &--first-col
         display: flex
         flex-direction: column

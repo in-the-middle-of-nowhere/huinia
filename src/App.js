@@ -5,6 +5,7 @@ import InfoComponent from './components/InfoComponent';
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import BuyAccounts from './components/BuyAccounts';
 import OrderComponent from './components/OrderComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
